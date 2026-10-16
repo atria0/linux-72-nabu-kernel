@@ -48,9 +48,9 @@ jobs:
           pkgrel=$(grep -m1 '^pkgrel=' "packages/$package/PKGBUILD" | cut -d= -f2- | tr -d '"')
           echo "package=$package" >> "$GITHUB_OUTPUT"
           echo "version=${pkgver}-${pkgrel}" >> "$GITHUB_OUTPUT"
-          cat packages/$pkg/PKGBUILD
+          cat packages/$package/PKGBUILD
           ## Add Ntsync
-          sed -i '33c\echo "CONFIG_NTSYNC=m" >> ./arch/arm64/configs/nabu_defconfig' packages/$pkg/PKGBUILD
+          sed -i '33c\echo "CONFIG_NTSYNC=m" >> ./arch/arm64/configs/nabu_defconfig' packages/$package/PKGBUILD
 
       - name: Install tools (Arch)
         if: matrix.distro == 'arch'
